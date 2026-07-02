@@ -159,7 +159,7 @@ if (feedbackForm) {
 }
 
 
-//  PERSISTENT STATE (localStorage) F3
+//  PERSISTENT STATE (localStorage) F4
 
 
 // Save wishlist to localStorage
@@ -263,3 +263,40 @@ if (themeToggle) {
     
     });
 }
+
+//CRICK TO SHOW OR REVEAL ON BANNER - F5  yay ain't GOD good
+
+// Get banner elements 
+let bannerImage = document.querySelector('#bannerImage');
+let bannerCaption = document.querySelector('#bannerCaption');
+
+if (bannerImage && bannerCaption) {
+    // Click event
+    bannerImage.addEventListener('click', function() {
+        // Toggle hidden class like section highlighting
+        bannerCaption.classList.toggle('hidden');
+    });
+}
+
+//Additions
+let commentInput = document.querySelector('#commentInput');
+let charCount = document.querySelector('#charCount');
+
+if (commentInput && charCount) {
+    commentInput.addEventListener('input', function() {
+        let totalChars = this.value.length;
+        // Count words
+        let words = this.value.trim().split(' ');
+        // Filter out empty strings
+        let filteredWords = [];
+        for (let i = 0; i < words.length; i++) {
+            if (words[i] !== '') {
+                filteredWords.push(words[i]);
+            }
+        }
+        charCount.textContent = 'Characters: ' + totalChars + ' | Words: ' + filteredWords.length;
+    });
+}
+
+console.log('Javytech JavaScript loaded successfully (´▽`ʃ♡ƪ)');
+
