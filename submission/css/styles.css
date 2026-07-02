@@ -451,3 +451,159 @@ hr {
     transform: translateY(-5px);
     border-color: var(--col-cyan);
 }
+
+
+/* Wishlist Items */
+.wishlist-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 12px 16px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+.wishlist-item span {
+    color: var(--col-cream);
+    font-size: 1em;
+}
+
+.wishlist-item .delete-btn {
+    background: var(--col-bg-deep);
+    border: 1px solid var(--col-coral);
+    padding: 5px 12px;
+    font-size: 0.8rem;
+}
+
+.wishlist-item .delete-btn:hover {
+    background: var(--col-coral);
+}
+
+
+/* Form layout */
+.form-row {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    flex-wrap: wrap;
+    margin: 15px 0;
+}
+
+/* Input field */
+.form-row input {
+    flex: 1;
+    min-width: 200px;
+    padding: 12px 18px;
+    border: 1px solid var(--col-cyan-light);
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.06);
+    color: var(--col-cream);
+    font-size: 0.95rem;
+    outline: none;
+    transition: all 0.3s ease;
+    font-family: 'Instrument Sans', sans-serif;
+}
+
+.form-row input:focus {
+    border-color: var(--col-cyan);
+    box-shadow: 0 0 20px rgba(0, 213, 216, 0.15);
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.form-row input::placeholder {
+    color: var(--col-muted);
+    font-style: italic;
+}
+
+.form-row button {
+    padding: 12px 28px;
+    background: linear-gradient(135deg, var(--col-cyan), #00b8c9);
+    border: none;
+    border-radius: 10px;
+    color: var(--col-bg-deep);
+    font-weight: 700;
+    font-size: 0.95rem;
+    font-family: 'Instrument Sans', sans-serif;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    box-shadow: 0 4px 15px rgba(0, 213, 216, 0.25);
+}
+
+.form-row button:hover {
+    transform: translateY(-2px) scale(1.02);
+    background: linear-gradient(135deg, var(--col-cyan-light), var(--col-cyan));
+    box-shadow: 0 8px 25px rgba(0, 213, 216, 0.4);
+}
+
+.form-row button:active {
+    transform: translateY(0px) scale(0.98);
+    box-shadow: 0 2px 10px rgba(0, 213, 216, 0.2);
+}
+
+.wishlist-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 12px 18px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    border-left: 3px solid var(--col-cyan);
+    transition: all 0.3s ease;
+}
+
+.wishlist-item:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateX(5px);
+    border-left-color: var(--col-coral);
+}
+
+.wishlist-item span {
+    color: var(--col-cream);
+    font-size: 1em;
+    font-weight: 500;
+}
+
+/* Delete button inside wishlist */
+.wishlist-item .delete-btn {
+    background: rgba(255, 79, 135, 0.12);
+    border: 1px solid var(--col-coral);
+    color: var(--col-coral);
+    padding: 6px 16px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.8rem;
+    font-family: 'Instrument Sans', sans-serif;
+    font-weight: 600;
+}
+
+.wishlist-item .delete-btn:hover {
+    background: var(--col-coral);
+    color: var(--col-bg-deep);
+    transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(255, 79, 135, 0.3);
+}
+
+/* Empty state message */
+#wishlistItems:empty::after {
+    content: "✨ Your wishlist is empty. Add some tech!";
+    display: block;
+    color: var(--col-muted);
+    text-align: center;
+    padding: 30px 20px;
+    font-style: italic;
+    border: 2px dashed rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    margin-top: 10px;
+}
+
+
+input {
+    width: 100%;
+    box-sizing: border-box;
+}

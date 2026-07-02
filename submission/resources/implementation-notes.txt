@@ -1,0 +1,36 @@
+JAVYTECH ELECTRONICS - CAT 2 IMPLEMENTATION NOTES
+
+1. Loop-rendered dynamic content:
+   - Created featuredProducts array with 6 products
+   - Each product has name, price, category properties
+   - Used forEach loop (like governors.forEach from lab)
+   - Used createElement and appendChild (like wishlist from lab)
+   - Renders into #dynamic-products container
+
+2. Dynamic add & remove elements:
+   - Wishlist form with input field and submit
+   - Uses createElement and appendChild (from lab case 6)
+   - Each item has delete button using remove() (from lab)
+   - Prevents form refresh with preventDefault (from lab)
+
+3. Form handling with validation:
+   - Feedback form with name, email, message
+   - Uses preventDefault (from lab case 7)
+   - Validates: name (min 2 chars), email (has @ and .), message (min 10 chars)
+   - Shows error/success with innerHTML (from lab case 7)
+
+4. Persistent state with localStorage:
+   - Saves wishlist items in browser memory
+   - Restores wishlist on page reload
+   - Saves dark/light theme preference
+   - Uses localStorage.getItem and setItem
+
+5.  Click-to-reveal on banner:
+   - Banner image with click event listener
+   - Uses classList.toggle (from lab section highlighting)
+   - Shows/hides caption with .hidden class
+
+Additional features:
+- Character counter (from lab case 4)
+- Word counter added to character counter
+- Theme toggle with localStorage persistence

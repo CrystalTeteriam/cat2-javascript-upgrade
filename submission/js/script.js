@@ -35,3 +35,55 @@ function renderProducts() {
 
 //runs when page is loaded
 document.addEventListener('DOMContentLoaded', renderProducts);
+
+// DYNAMIC ADD & REMOVE (Wishlist)-F2
+
+// Get elements
+let wishlistForm = document.querySelector('#wishlistForm');
+let wishlistInput = document.querySelector('#wishlistInput');
+let wishlistItems = document.querySelector('#wishlistItems');
+
+// Add item case 6 lab
+if (wishlistForm) {
+    wishlistForm.addEventListener('submit', function(e) {
+        // prevent refresh 
+        e.preventDefault();
+        
+        let itemName = wishlistInput.value.trim();
+        
+        // check if empty 
+        if (itemName === '') {
+            alert('Please enter an item!');
+            return;
+        }
+        
+        //Create list item 
+        let li = document.createElement('li');
+        li.className = 'wishlist-item';
+        
+        // Create span for text
+        let span = document.createElement('span');
+        span.textContent = itemName;
+        
+        //   Create delete button 
+        let deleteBtn = document.createElement('button');
+        deleteBtn.textContent = ' Remove me';
+        deleteBtn.className = 'delete-btn';
+        
+        // adding delete functionality 
+        deleteBtn.addEventListener('click', function() {
+            li.remove(); // You know remove() from lab!
+            saveWishlist(); // We'll add this later
+        });
+        
+    
+        li.appendChild(span);
+        li.appendChild(deleteBtn);
+        wishlistItems.appendChild(li);
+        
+        // clear or reset input 
+        wishlistInput.value = '';
+        
+        saveWishlist();
+    });
+}
