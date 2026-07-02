@@ -157,3 +157,109 @@ if (feedbackForm) {
         }
     });
 }
+
+
+//  PERSISTENT STATE (localStorage) F3
+
+
+// Save wishlist to localStorage
+function saveWishlist() {
+    let items = [];
+    // Getting all items using querySelectorAll
+    let allItems = document.querySelectorAll('#wishlistItems li span');
+    
+    // Loop through them  foreach
+    allItems.forEach(function(span) {
+        items.push(span.textContent);
+    });
+    
+    // localStorage is like permanent memory
+    localStorage.setItem('javytechWishlist', JSON.stringify(items));
+}
+
+// loading tse wishlist from localStorage
+function loadWishlist() {
+    let saved = localStorage.getItem('javytechWishlist');
+    if (saved) {
+        // Parse the saved data - this turns it back into an array
+        let items = JSON.parse(saved);
+        let wishlistItems = document.querySelector('#wishlistItems');
+        
+        // Loop through saved items 
+        items.forEach(function(itemName) {
+            // Recreate each item 
+            let li = document.createElement('li');
+            li.className = 'wishlist-item';
+            
+            let span = document.createElement('span');
+            span.textContent = itemName;
+            
+            let deleteBtn = document.createElement('button');
+            deleteBtn.textContent = ' Remove me';
+            deleteBtn.className = 'delete-btn';
+            
+            deleteBtn.addEventListener('click', function() {
+                li.remove();
+                saveWishlist();
+            });
+            
+            li.appendChild(span);
+            li.appendChild(deleteBtn);
+            wishlistItems.appendChild(li);
+        });
+    }
+}
+
+// Load wishlist when page loads using DOMContentLoaded roho hii ni google 
+document.addEventListener('DOMContentLoaded', loadWishlist);
+
+// Theme toggle using localStorage to save preference  finally sometjing I know
+let themeToggle = document.querySelector('#themeToggle');
+
+if (themeToggle) {
+    // Check saved theme
+    let savedTheme = localStorage.getItem('javytechTheme');
+    if (savedTheme === 'dark') { //applying the saved theme on the load
+        document.body.classList.add('dark-mode');
+         document.body.classList.remove('light-mode');
+        themeToggle.textContent = 'Light Mode';
+    
+} else if (savedTheme === 'light') {
+        document.body.classList.add('light-mode');
+        document.body.classList.remove('dark-mode');
+        themeToggle.textContent = 'Dark Mode';
+    } else {
+        // Normal mode (default)
+        document.body.classList.remove('dark-mode', 'light-mode');
+        themeToggle.textContent = '🌑 Dark Mode 🌑';
+    }
+    
+//moving through norm ligh and dar
+    themeToggle.addEventListener('click', function() {
+        let currentTheme = localStorage.getItem('javytechTheme');
+        
+        
+        if (currentTheme === 'dark') {
+            // Dark → Light
+            document.body.classList.remove('dark-mode');
+            document.body.classList.add('light-mode');
+            localStorage.setItem('javytechTheme', 'light');
+            this.textContent = 'Normal mode';
+            
+        } else if (currentTheme === 'light') {
+            // Light → Normal
+            document.body.classList.remove('light-mode');
+            document.body.classList.remove('dark-mode');
+            localStorage.setItem('javytechTheme', 'normal');
+            this.textContent = '🌑 Dark Mode 🌑';
+            
+        } else {
+            // Normal → Dark
+            document.body.classList.add('dark-mode');
+            document.body.classList.remove('light-mode');
+            localStorage.setItem('javytechTheme', 'dark');
+            this.textContent = '☀️ Light Mode';
+        }
+    
+    });
+}
