@@ -298,5 +298,6 @@ if (commentInput && charCount) {
     });
 }
 
-console.log('Javytech JavaScript loaded successfully (´▽`ʃ♡ƪ)');
+console.log('Javytech JavaScript loaded successfully yay (´▽`ʃ♡ƪ)');
 
+//checking
