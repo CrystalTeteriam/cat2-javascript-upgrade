@@ -87,3 +87,73 @@ if (wishlistForm) {
         saveWishlist();
     });
 }
+
+
+// FORM HANDLING WITH VALIDATION - F3
+
+
+// Get form elements 
+let feedbackForm = document.querySelector('#feedbackForm');
+let feedbackOutput = document.querySelector('#feedbackOutput');
+
+if (feedbackForm) {
+    // submit event 
+    feedbackForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        // get values
+        let name = document.querySelector('#fanName').value.trim();
+        let email = document.querySelector('#fanEmail').value.trim();
+        let message = document.querySelector('#fanMessage').value.trim();
+        
+        // Validate checking if empty
+        let errors = [];
+        
+        if (name === '') {
+            errors.push('Name is required');
+        } else if (name.length < 2) {
+            errors.push('Name must be at least 2 characters');
+        }
+        
+        if (email === '') {
+            errors.push('Email is required');
+        } else if (!email.includes('@') || !email.includes('.')) {
+            errors.push('Please enter a valid email address');
+        }
+        
+        if (message === '') {
+            errors.push('Message is required');
+        } else if (message.length < 10) {
+            errors.push('Message must be at least 10 characters');
+        }
+        
+        // show feedback using innerHTML 
+        if (errors.length > 0) {
+            // showing errors using innerHTML
+            feedbackOutput.innerHTML = '<div style="color: #ff4f87; border: 2px solid #ff4f87; padding: 15px; border-radius: 8px;">' +
+                                       '<strong>❌ Please fix the following errors:</strong>' +
+                                       '<ul>';
+            
+            // Looping through errors using forEach like you know!
+            errors.forEach(function(err) {
+                feedbackOutput.innerHTML = feedbackOutput.innerHTML + '<li>' + err + '</li>';
+            });
+            
+            feedbackOutput.innerHTML = feedbackOutput.innerHTML + '</ul></div>';
+            
+        } else {
+            // Show success yay using innerHTML like your lab!
+            feedbackOutput.innerHTML = '<div style="color: #4ff6ea; border: 2px solid #4ff6ea; padding: 15px; border-radius: 8px;">' +
+                                       '<strong>✅ Thank you, ' + name + '!</strong>' +
+                                       '<p>Your feedback has been submitted successfully.</p>' +
+                                       '<p><strong>Email:</strong> ' + email + '</p>' +
+                                       '<p><strong>Message:</strong> ' + message + '</p>' +
+                                       '</div>';
+            
+            // Clear form
+            document.querySelector('#fanName').value = '';
+            document.querySelector('#fanEmail').value = '';
+            document.querySelector('#fanMessage').value = '';
+        }
+    });
+}

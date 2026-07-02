@@ -607,3 +607,115 @@ input {
     width: 100%;
     box-sizing: border-box;
 }
+
+/* Feedback form output */
+
+#form-lab {
+    background-color: var(--col-bg-mid);
+    border-left: 5px solid var(--col-coral);
+    border-radius: 15px;
+    padding: 25px;
+    margin-bottom: 30px;
+    transition: border-color 0.3s ease;
+}
+
+#form-lab:hover {
+    border-left-color: var(--col-cyan);
+}
+
+/* Form labels */
+#form-lab label {
+    display: block;
+    color: var(--col-cream);
+    font-weight: 600;
+    margin-top: 15px;
+    margin-bottom: 5px;
+}
+
+/* Form inputs */
+#form-lab input,
+#form-lab textarea {
+    width: 97.5%;
+    padding: 12px;
+    background: rgba(255, 255, 255, 0.08);
+    border: 2px solid var(--col-cyan-light);
+    border-radius: 8px;
+    color: var(--col-cream);
+    font-family: inherit;
+    font-size: 1em;
+    transition: border-color 0.3s ease;
+}
+
+#form-lab input:focus,
+#form-lab textarea:focus {
+    outline: none;
+    border-color: var(--col-cyan);
+    box-shadow: 0 0 10px rgba(0, 213, 216, 0.3);
+}
+
+/* Submit button */
+#form-lab button[type="submit"] {
+    background-color: var(--col-coral);
+    color: var(--col-cream);
+    border: none;
+    border-radius: 8px;
+    padding: 12px 30px;
+    margin-top: 15px;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 1em;
+    transition: all 0.3s ease;
+}
+
+#form-lab button[type="submit"]:hover {
+    background-color: var(--col-sunset);
+    color: var(--col-bg-deep);
+    transform: scale(1.02);
+}
+
+/* Feedback output box */
+#feedbackOutput {
+    margin-top: 20px;
+    padding: 16px;
+    background-color: rgba(8, 19, 31, 0.65);
+    border-radius: 8px;
+    border: 1px solid var(--col-cyan-light);
+    min-height: 60px;
+    color: var(--col-cream);
+    transition: all 0.3s ease;
+}
+
+#feedbackOutput ul {
+    color: var(--col-cream);
+    padding-left: 20px;
+    margin: 10px 0;
+}
+
+#feedbackOutput ul li {
+    color: #ff4f87;
+    margin: 5px 0;
+}
+
+/* Success message styling */
+#feedbackOutput .success-text {
+    color: var(--col-cyan-light);
+    font-weight: 700;
+}
+
+/* Error message styling */
+#feedbackOutput .error-text {
+    color: #ff4f87;
+    font-weight: 700;
+}
+
+/* Responsive for mobile */
+@media screen and (max-width: 730px) {
+    #form-lab input,
+    #form-lab textarea {
+        width: 92%;
+    }
+    
+    #form-lab button[type="submit"] {
+        width: 100%;
+    }
+}
